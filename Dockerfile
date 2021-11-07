@@ -3,9 +3,11 @@ FROM debian:stable-slim
 LABEL maintainer="martino.migliavacca@gmail.com"
 
 # Install prereqs
-RUN apt-get update && apt-get install -y \
+RUN dpkg --add-architecture i386 && apt-get update && apt-get install -y \
   p7zip-full \
   curl \
+  libc6-i386 \
+  zlib1g:i386 \
  && rm -rf /var/lib/apt/lists/*
 
 # Install ET Legacy and assets
